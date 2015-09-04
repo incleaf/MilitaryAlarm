@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         //apiAdapter 정의
         restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://192.168.0.231:3000")
+                .setEndpoint(URLS.API_URL)
                 .build();
 
         apiService = restAdapter.create(APIService.class);

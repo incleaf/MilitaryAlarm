@@ -19,6 +19,7 @@ public class MyGcmListenerService extends GcmListenerService {
 
     private static final String TAG = "MyGcmListenerService";
 
+
     /**
      *
      * @param from SenderID 값을 받아온다.
@@ -32,6 +33,7 @@ public class MyGcmListenerService extends GcmListenerService {
         Log.d(TAG, "From: " + from);
         Log.d(TAG, "Title: " + title);
         Log.d(TAG, "Message: " + message);
+
 
         // GCM으로 받은 메세지를 디바이스에 알려주는 sendNotification()을 호출한다.
         sendNotification(title, message);
@@ -56,11 +58,14 @@ public class MyGcmListenerService extends GcmListenerService {
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
+                .setContentIntent(pendingIntent)
+                .setVibrate(new long[]{200, 4000, 200, 4000});
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
     }
 }

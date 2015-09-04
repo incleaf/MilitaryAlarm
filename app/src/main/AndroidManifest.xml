@@ -57,7 +57,8 @@
         <!-- [START gcm_registration_service] -->
         <service
             android:name="net.incleaf.demo.gcm.RegistrationIntentService"
-            android:exported="false"></service>
+            android:exported="false">
+        </service>
         <!-- [END gcm_registration_service] -->
     </application>
 
