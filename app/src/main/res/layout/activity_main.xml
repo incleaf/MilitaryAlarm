@@ -20,4 +20,14 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:id="@+id/registrationProgressBar" />-->
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="진동 끄기"
+        android:id="@+id/button" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="병무청 산업지원과에 전화"
+        android:id="@+id/button1" />
 </LinearLayout>
