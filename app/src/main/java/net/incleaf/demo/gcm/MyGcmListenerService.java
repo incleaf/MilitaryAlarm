@@ -19,7 +19,6 @@ public class MyGcmListenerService extends GcmListenerService {
 
     private static final String TAG = "MyGcmListenerService";
 
-
     /**
      *
      * @param from SenderID 값을 받아온다.
@@ -59,11 +58,12 @@ public class MyGcmListenerService extends GcmListenerService {
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
-                .setVibrate(new long[]{200, 4000, 200, 4000});
-
+                .setOngoing(true);
+//                .setVibrate(new long[]{10, 9999999});
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
+        Intent vibService = new Intent(this, MyVibratorService.class);
+        startService(vibService);
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
 

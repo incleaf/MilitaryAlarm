@@ -1,10 +1,14 @@
 package net.incleaf.demo.gcm;
 
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,14 +26,31 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar mRegistrationProgressBar;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView mInformationTextView;
-
+    private Vibrator mVib;
+    private Context me;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         getInstanceIdToken();
+        mVib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        me = this;
+        this.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vibService = new Intent(me, MyVibratorService.class);
+                stopService(vibService);
+            }
+        });
+
+        this.findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:02-820-4495"));
+                startActivity(intent);
+            }
+        });
     }
 
 
